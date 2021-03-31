@@ -1,0 +1,24 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "mtancoigne",
+      "name": "Manuel Tancoigne",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1732268?v=4",
+      "profile": "https://experimentslabs.com",
+      "contributions": [
+        "code"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "attractor-javascript",
+  "projectOwner": "julianrubisch",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
