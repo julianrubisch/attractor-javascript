@@ -8,11 +8,26 @@ try {
 
   const details = {};
 
-  report.methods.forEach(m => {
-    details[m.name] = m.cyclomatic;
+  const addMethod = (m, className = null) => {
+    const name = className ? `${className}#${m.name}` : m.name;
+    details[name] = {
+      score: m.cyclomatic,
+      line: m.lineStart,
+      end_line: m.lineEnd
+    };
+  };
+
+  report.methods.forEach(m => addMethod(m));
+
+  (report.classes || []).forEach(klass => {
+    (klass.methods || []).forEach(m => addMethod(m, klass.name));
   });
 
-  console.log(JSON.stringify([report.aggregate.cyclomatic, details]));
+  const symbols = {
+    references: (report.dependencies || []).map(d => d.path)
+  };
+
+  console.log(JSON.stringify([report.aggregate.cyclomatic, details, symbols]));
 } catch (e) {
-  console.log([0, {}]);
+  console.log(JSON.stringify([0, {}, {references: []}]));
 }
